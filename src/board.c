@@ -5,12 +5,7 @@
 
 struct Board start_position()
 {
-    struct Board board;
-    memset(&board, 0, sizeof(struct Board));
-
-    board.rooks[WHITE] |= (1ULL << 7);
-    board.rooks[WHITE] |= (1ULL << 0);
-    return board;
+    return from_fen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
 }
 
 struct Board from_fen(const char *fen)
@@ -28,7 +23,6 @@ struct Board from_fen(const char *fen)
         }
 
         if (*c == '/') {
-            // idx -= 8;
             c++;
             continue;
         }
