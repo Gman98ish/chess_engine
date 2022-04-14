@@ -6,7 +6,7 @@
 void test_rook_moves()
 {
     struct Board board;
-    memset(&board, 0, sizeof(board));   
+    memset(&board, 0, sizeof(board));
 
     Board_generate_lookup_tables(&board);
 
@@ -21,7 +21,7 @@ void test_rook_moves()
 void test_bishop_moves()
 {
     struct Board board;
-    memset(&board, 0, sizeof(board));   
+    memset(&board, 0, sizeof(board));
 
     Board_generate_lookup_tables(&board);
 

@@ -26,13 +26,13 @@ int main(int argc, char **argv)
     struct Board board = start_position();
     Board_generate_lookup_tables(&board);
 
-    print_bitboard(board.bishop_moves[63][NORTH_WEST]);
+    print_bitboard(board.knight_moves[63]);
     printf("\n");
-    print_bitboard(board.bishop_moves[62][NORTH_WEST]);
+    print_bitboard(board.knight_moves[62]);
     printf("\n");
-    print_bitboard(board.bishop_moves[61][NORTH_WEST]);
+    print_bitboard(board.knight_moves[61]);
     printf("\n");
-    print_bitboard(board.bishop_moves[20][NORTH_WEST]);
+    print_bitboard(board.knight_moves[20]);
     printf("\n");
 
     return 0;

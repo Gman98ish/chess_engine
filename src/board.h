@@ -39,6 +39,7 @@ struct Board {
 
     U64 rook_moves[64][8];
     U64 bishop_moves[64][8];
+    U64 knight_moves[64];
 };
 
 struct Board start_position();

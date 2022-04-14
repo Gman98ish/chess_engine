@@ -169,7 +169,52 @@ void _generate_bishop_moves(struct Board *board, int rank, int file)
     board->bishop_moves[rank * 8 + file][NORTH_WEST] = move;
 }
 
-void _generate_knight_moves(struct Board *board, int rank, int file) {}
+void _generate_knight_moves(struct Board *board, int rank, int file)
+{
+    U64 move = 0;
+    // two up one left
+    if (rank - 2 >= 0 && file - 1 >= 0) {
+        move |= (1ULL << (8 * (rank - 2) + (file - 1)));
+    }
+
+    // two up one right
+    if (rank - 2 >= 0 && file + 1 < 8) {
+        move |= (1ULL << (8 * (rank - 2) + (file + 1)));
+    }
+
+    // two right one up
+    if (rank - 1 >= 0 && file + 2 < 8) {
+        move |= (1ULL << (8 * (rank - 1) + (file + 2)));
+    }
+
+    // two right one down
+    if (rank + 1 < 8 && file + 2 < 8) {
+        move |= (1ULL << (8 * (rank + 1) + (file + 2)));
+    }
+
+    // two down one left
+    if (rank + 2 < 8 && file - 1 >= 0) {
+        move |= (1ULL << (8 * (rank + 2) + (file - 1)));
+    }
+
+    // two down one right
+    if (rank + 2 < 8 && file + 1 < 8) {
+        move |= (1ULL << (8 * (rank + 2) + (file + 1)));
+    }
+
+    // two left one up
+    if (rank - 1 >= 0 && file - 2 >= 0) {
+        move |= (1ULL << (8 * (rank - 1) + (file - 2)));
+    }
+    
+    // two left one down
+    if (rank + 1 < 8 && file - 2 >= 0) {
+        move |= (1ULL << (8 * (rank + 1) + (file - 2)));
+    }
+
+    board->knight_moves[rank * 8 + file] = move;
+}
+
 void _generate_white_pawn_moves(struct Board *board, int rank, int file) {}
 void _generate_black_pawn_moves(struct Board *board, int rank, int file) {}
 void _generate_king_moves(struct Board *board, int rank, int file) {}
