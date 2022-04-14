@@ -26,9 +26,9 @@ int main(int argc, char **argv)
     struct Board board = start_position();
     Board_generate_lookup_tables(&board);
 
-    print_bitboard(board.pawn_moves[16][WHITE]);
+    print_bitboard(board.pawn_moves[54][BLACK]);
     printf("\n");
-    print_bitboard(board.pawn_moves[8][WHITE]);
+    print_bitboard(board.pawn_moves[46][BLACK]);
     printf("\n");
 
     return 0;

@@ -229,7 +229,20 @@ void _generate_white_pawn_moves(struct Board *board, int rank, int file)
     board->pawn_moves[rank * 8 + file][WHITE] = move;
 }
 
-void _generate_black_pawn_moves(struct Board *board, int rank, int file) {}
+void _generate_black_pawn_moves(struct Board *board, int rank, int file)
+{
+    U64 move = 0;
+
+    if (rank == 6) {
+        move |= (1ULL << (8 * (rank - 2) + file));
+    }
+    if (rank > 0) {
+        move |= (1ULL << (8 * (rank - 1) + file));
+    }
+    
+    board->pawn_moves[rank * 8 + file][BLACK] = move;
+}
+
 void _generate_king_moves(struct Board *board, int rank, int file) {}
 
 /**
