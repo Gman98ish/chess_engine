@@ -1,2 +1,5 @@
 chess_engine
 chess_engine.exe
+runtests
+runtests.exe
+*.stackdump
