@@ -243,7 +243,52 @@ void _generate_black_pawn_moves(struct Board *board, int rank, int file)
     board->pawn_moves[rank * 8 + file][BLACK] = move;
 }
 
-void _generate_king_moves(struct Board *board, int rank, int file) {}
+void _generate_king_moves(struct Board *board, int rank, int file)
+{
+    U64 move = 0;
+
+    // SOUTH
+    if (rank > 0) {
+        move |= (1ULL << (8 * (rank - 1) + file));
+    }
+
+    // SOUTH EAST
+    if (rank > 0 && file < 7) {
+        move |= (1ULL << (8 * (rank - 1) + (file + 1)));
+    }
+
+    // SOUTH WEST
+    if (rank > 0 && file > 0) {
+        move |= (1ULL << (8 * (rank - 1) + (file - 1)));
+    }
+
+    // EAST
+    if (file < 7) {
+        move |= (1ULL << (8 * rank + (file + 1)));
+    }
+
+    // WEST
+    if (file > 0) {
+        move |= (1ULL << (8 * rank + (file - 1)));
+    }
+
+    // NORTH
+    if (rank < 7) {
+        move |= (1ULL << (8 * (rank + 1) + file));
+    }
+
+    // NORTH EAST
+    if (rank < 7 && file < 7) {
+        move |= (1ULL << (8 * (rank + 1) + (file + 1)));
+    }
+
+    // NORTH WEST
+    if (rank < 7 && file > 0) {
+        move |= (1ULL << (8 * (rank + 1) + (file - 1)));
+    }
+
+    board->king_moves[rank * 8 + file] = move;
+}
 
 /**
  * @brief Generate the lookup tables for the sliding piece moves.
